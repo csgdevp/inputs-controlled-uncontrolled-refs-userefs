@@ -43,14 +43,12 @@ const FullName = () => {
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
 
-  const fullname = {
-    firstName: "",
-    lastName: "",
-  };
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const handleSubmit = () => {
-    fullname.firstName = firstNameRef.current.value;
-    fullname.lastName = lastNameRef.current.value;
+    setFirstName(firstNameRef.current.value);
+    setLastName(lastNameRef.current.value);
   };
 
   return (
@@ -67,7 +65,7 @@ const FullName = () => {
       </label>
       <button onClick={handleSubmit}>Submit</button>
       <h2>
-        Hello, {fullname.firstName} {fullname.lastName}!
+        Hello, {firstName} {lastName}!
       </h2>
     </div>
   );
@@ -242,4 +240,4 @@ class Pizza extends React.Component {
   }
 }
 
-ReactDOM.render(<Pizza />, document.getElementById("root"));
+ReactDOM.render(<FullName />, document.getElementById("root"));
